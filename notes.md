@@ -1,5 +1,11 @@
 Note: 
 Commit this
 
-### Introduction
-The use of `git add .` is hacking.
+# Welcome to the Notes
+
+## Website information
+### Command to access server command prompt:
+`ssh -i ~/OneDrive/Documents/galagakey.pem ubuntu@52.205.246.165`
+
+### IP Address
+`52.205.246.165`
