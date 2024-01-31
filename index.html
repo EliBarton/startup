@@ -10,9 +10,39 @@
 </head>
 
 <body>
-<header>
-    <h1>GalagaOnline</h1>
-</header>
+    <header>
+        <h1>GalagaOnline</h1>
+        <div></div>
+        <menu>
+            <nav>
+                <li><a href="index.html">Welcome</a></li>
+                <li><a href="play.html">Play</a></li>
+                <li><a href="scores.html">Scores</a></li>
+            </nav>
+        </menu>
+    </header>
+    <main>
+        <marquee behavior="alternate" direction="down" scrollamount="5" loop="1000" height=250>
+            <marquee behavior="alternate" direction="right"></marquee>
+            <p style="color: navy;font-size: 100px; align-self: center; text-align: center;">Welcome to GalagaOnline!
+        </marquee>
+        </p>
+        </marquee>
+        <p style="font-size: x-large; text-align: center;">Login</p>
+        <form method="get" action="play.html" style="text-align: center;">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name here" />
+            <br>
+            <label for="password">Password</label>
+            <input type="text" id="password" placeholder="Your password here" />
+            <br>
+            <button type="submit">Login</button>
+          </form>
+    </main>
+
+    <footer>
+        <a href="https://github.com/EliBarton/startup">Eli Barton's GitHub</a>
+    </footer>
 </body>
 
 </html>
