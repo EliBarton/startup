@@ -34,3 +34,14 @@ I will use the required technologies in the following ways.
 - **DB/Login** - Store users, choices, and scores in database. Register and login users. Credentials securely stored in database. Can't save high score unless authenticated.
 - **WebSocket** - As each user gets a new high score, their score is saved so all other users can see it on the leaderboard.
 - **React** - Application ported to use the React web framework.
+
+## HTML Deliverable
+
+For this deliverable I built out the structure of my application using HTML.
+
+- **HTML Pages** - 3 HTML pages to represent a welcome, play, and scores page
+- **Links** - All pages have a header with links to all the other pages
+- **Text** - There's an instructions, scores, and a welcome message displayed
+- **Images** - The game is currently represented by an image of galaga
+- **DB/Login** - There is a username and password field in the welcome page
+- **WebSocket** - The leaderboard will update in real time
