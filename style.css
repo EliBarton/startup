@@ -1,0 +1,14 @@
+
+
+body{
+    background-color: cornflowerblue;
+    font-family: 'Ubuntu';
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: gainsboro;
+    flex: 0;
+    /*height: 5em;*/
+}
