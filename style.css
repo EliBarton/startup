@@ -1,5 +1,9 @@
 
-
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 body{
     background-color: cornflowerblue;
     font-family: 'Ubuntu';
@@ -9,6 +13,18 @@ body{
 
 header {
     background-color: gainsboro;
-    flex: 0;
-    /*height: 5em;*/
+    flex: 0 80px;
+    height: 1em;
 }
+
+footer {
+    flex: 0 30px;
+}
+  
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
