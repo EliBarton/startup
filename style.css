@@ -27,7 +27,8 @@ nav{
 .navbar-brand{
     margin: 0px;
     padding: 1em;
-    border: solid whitesmoke thin
+    border: solid whitesmoke thin;
+    font-size: 3em;
 }
 
 menu{
@@ -43,7 +44,7 @@ li{
 main{
     display: flex;
     flex-direction: column;
-    flex: 1 calc(100vh - 150px);
+    flex: 1 calc(100vh - 120px);
     align-items: center;
 }
 
