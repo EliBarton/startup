@@ -65,12 +65,36 @@ footer{
     padding: 2em;
 }
 
-ol {
-    list-style: none;
-    padding-left: 0 !important;
-}
+
 
 h1{
     margin-bottom: 20px !important;
     border-bottom: solid wheat;
+}
+
+.Leaderboard {
+    width: 300px;
+    margin: 0 auto;
+}
+
+ol {
+    list-style: none;
+    padding: 0 !important;
+}
+
+li {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.player-name {
+    flex-grow: 1;
+}
+
+.score {
+    margin-left: 20px; /* Adjust as needed */
+    min-width: 50px; /* Adjust as needed */
+    text-align: right;
 }
