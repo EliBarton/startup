@@ -30,17 +30,20 @@
     <main class="container-fluid text-center">
             <p class="Welcome">Welcome to GalagaOnline!
         </p>
-        <p style="font-size: x-large; text-align: center;">Login</p>
-        <form method="get" action="play.html" >
+        <p style="font-size: x-large; text-align: center; margin: 6px;">Login</p>
+        <div style="width: 250px; border: solid grey thick; padding: 10px;">
+        <form method="get" action="play.html">
             <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name here" />
+            <label for="name">Userame</label>
+            <input type="text" id="username" placeholder="Enter username" />
             </div>
+            <div class="form-group">
             <label for="password">Password</label>
-            <input type="text" id="password" placeholder="Your password here" />
-            <br>
-            <button type="submit">Login</button>
+            <input type="password" id="password" placeholder="Your password here" />
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
           </form>
+        </div>
     </main>
 
 <footer>
