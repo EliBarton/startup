@@ -60,3 +60,17 @@ footer{
 .form-group{
     margin: 5px;
 }
+
+.game-viewport{
+    padding: 2em;
+}
+
+ol {
+    list-style: none;
+    padding-left: 0 !important;
+}
+
+h1{
+    margin-bottom: 20px !important;
+    border-bottom: solid wheat;
+}
