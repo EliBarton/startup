@@ -44,7 +44,7 @@ menu{
 main{
     display: flex;
     flex-direction: column;
-    flex: 1 calc(100vh - 120px);
+    flex: 1 calc(100vh - 100px);
     align-items: center;
 }
 
@@ -55,6 +55,13 @@ main{
 
 footer{
     flex: 0 40px;
+    display: flex;
+    background-color: darkslategray !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding-inline: 2em;
 }
 
 .form-group{
@@ -95,7 +102,7 @@ li {
 }
 
 .score {
-    margin-left: 20px; /* Adjust as needed */
-    min-width: 50px; /* Adjust as needed */
+    margin-left: 20px;
+    min-width: 50px;
     text-align: right;
 }
