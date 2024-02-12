@@ -36,9 +36,9 @@ menu{
     margin: 0px;
 }
 
-li{
-    padding-left: 2em;
-    font-size: medium;
+.nav-item{
+    padding-left: 1.5em;
+    margin: 0;
 }
 
 main{
@@ -83,10 +83,11 @@ ol {
 }
 
 li {
+    font-size: medium;
     padding: 0;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px; /* Adjust as needed */
+    margin-bottom: 15px;
 }
 
 .player-name {
