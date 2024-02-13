@@ -45,3 +45,14 @@ For this deliverable I built out the structure of my application using HTML.
 - **Images** - The game is currently represented by an image of galaga
 - **DB/Login** - There is a username and password field in the welcome page
 - **WebSocket** - The leaderboard will update in real time
+
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- **Header, footer, and main content body**
+- **Navigation elements** - I made 3 buttons to navigate to different pages
+- **Responsive to window resizing** - My app looks great on all window sizes and devices, even my phone!
+- **Application elements** - Used good contrast and whitespace that is gray
+- **Application text content** - Consistent fonts and good font sizing
+- **Application images** - Image placeholder for the galaga game still looks great!
