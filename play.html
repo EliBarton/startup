@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simon HTML</title>
+    <title>arcade game</title>
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
     <link
@@ -33,6 +33,7 @@
     <main>
         <div style="text-align: center;" >
         <img src="https://imgs.search.brave.com/mnRytPWQklOiLqLKt4r0myHlDrW1VVnRvIXXqk-3kjA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jb21w/dXRlcmFyY2hlb2xv/Z3kuY29tL0FyY2Fk/ZS9HYWxhZ2EvZ2Fs/YWdhMS5qcGc" alt="" class="game-viewport">
+        <canvas id="canvas"></canvas>
         
         <h2>Instructions:</h2>
         <p>Press shoot to shoot and move around to move. Get points by killing enemies and advancing through the rounds. Get a higher score than your last to save it.</p>
@@ -46,5 +47,10 @@
 <p style="display:none">
     Wow look at this cool hidden text! You are cool if you see this.
 </p>
+<script src="Version0.3.2\index.js"></script>
+        <script>
+            var engine = new Engine("startup\Version0.3.2\index.pck");
+            engine.startGame();
+        </script>
 </body>
 </html>
