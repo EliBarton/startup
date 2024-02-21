@@ -106,3 +106,7 @@ li {
     min-width: 50px;
     text-align: right;
 }
+
+iframe {
+    margin: 2em;
+}
