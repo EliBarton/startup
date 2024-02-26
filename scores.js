@@ -1,10 +1,9 @@
+let localScore = 0;
+getLocalScore();
+let interval = setInterval(getLocalScore, 5000);
 
-let interval = setInterval(getLocalScore, 5000)
-
-let localScore = 0
 
 function getLocalScore(){
-    console.log("function called")
     let openDB = indexedDB.open("/userfs", 21);
     openDB.onsuccess = function(event) {
     let db = openDB.result;
@@ -22,9 +21,12 @@ function getLocalScore(){
 }
 
 function updateLocalScore(score){
-    //const scoreEl = document.querySelector("#username");
+    let scoreEl = document.querySelector("#highscore");
     localStorage.setItem("LocalScore", score);
     if (localStorage.getItem('LocalScore') ?? false){
-        
+        scoreEl.innerHTML = localStorage.getItem('LocalScore');
+    }
+    else{
+        scoreEl.innerHTML = 0
     }
 }
