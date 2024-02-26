@@ -16,3 +16,4 @@ if (getPlayerName()){
 else{
   playerNameEl.outerHTML = `<p class="nav" style="font-size: large; color: gray" id="playername">Not Logged In</p>`
 }
+
