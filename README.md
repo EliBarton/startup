@@ -64,4 +64,4 @@ For this deliverable I implemented JavaScript so that the application works for 
 - **login** - When you press enter or the login button it takes you to the voting page.
 - **database** - Displayed the live high score and leaderboard. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
 - **WebSocket** - I used the setInterval function to periodically increase a high score. This will be replaced with WebSocket messages later.
-- **application logic** - The high score updates when you get a new high score in the game. Have fun playing my placeholder space shooter that I made in 2019. It uses javascript to function but it's generated from the game engine.
+- **application logic** - The high score updates when you get a new high score in the game if you run it locally. On the galagaonline.click website it isn't saving the score for some reason so I added manual entering the high score until I make the real galaga game.

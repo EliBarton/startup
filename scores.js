@@ -1,4 +1,5 @@
 let localScore = 0;
+updateLocalScore(0);
 getLocalScore();
 let interval = setInterval(getLocalScore, 3000);
 
