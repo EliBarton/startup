@@ -56,3 +56,12 @@ For this deliverable I properly styled the application into its final appearance
 - **Application elements** - Used good contrast and whitespace that is gray
 - **Application text content** - Consistent fonts and good font sizing
 - **Application images** - Image placeholder for the galaga game still looks great!
+
+## JavaScript deliverable
+
+For this deliverable I implemented JavaScript so that the application works for a single user. I also added placeholders for future technology.
+
+- **login** - When you press enter or the login button it takes you to the voting page.
+- **database** - Displayed the live high score and leaderboard. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+- **WebSocket** - I used the setInterval function to periodically increase a high score. This will be replaced with WebSocket messages later.
+- **application logic** - The high score updates when you get a new high score in the game. Have fun playing my placeholder space shooter that I made in 2019. It uses javascript to function but it's generated from the game engine.

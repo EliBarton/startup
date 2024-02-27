@@ -1,6 +1,6 @@
 let localScore = 0;
 getLocalScore();
-let interval = setInterval(getLocalScore, 5000);
+let interval = setInterval(getLocalScore, 3000);
 
 
 function getLocalScore(){
@@ -13,16 +13,23 @@ function getLocalScore(){
     let request = objectStore.get("/userfs/bestscorejjlasers.data");
     
     request.onsuccess = function(event) {
-        //console.log(new Int32Array(request.result.contents.buffer)[2]);
         localScore = new Int32Array(request.result.contents.buffer)[2];
         updateLocalScore(localScore)
     };
+
     };
+}
+
+function scoreButtonClicked(){
+    let enteredScore = document.querySelector("#newhighscore").value
+    updateLocalScore(enteredScore)
 }
 
 function updateLocalScore(score){
     let scoreEl = document.querySelector("#highscore");
-    localStorage.setItem("LocalScore", score);
+    if (score > 0){
+        localStorage.setItem("LocalScore", score);
+    }
     if (localStorage.getItem('LocalScore') ?? false){
         scoreEl.innerHTML = localStorage.getItem('LocalScore');
     }
