@@ -16,7 +16,6 @@ players = [];
         scores.forEach(player => {
             players.push([player.name, player.score])
         });
-        console.log(players);
         // Save the scores in case we go offline in the future
         localStorage.setItem('scores', JSON.stringify(players));
     } catch {
@@ -24,7 +23,9 @@ players = [];
         console.log("Error getting scores");
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
-        scores = JSON.parse(scoresText);
+            scoresText.forEach(player => {
+                players.push([player.name, player.score])
+            });
         }
     }
 
@@ -39,7 +40,7 @@ async function updateLeaderboard(){
     }
 
     if (playersContains(getPlayerName()) == false){
-        players.push([getPlayerName(), getLocalScore()]);
+        players.push([getPlayerName(), getGlobalScore()]);
     }
 
     let randomPlayer = players[randomInt(0, players.length - 1)];
@@ -88,6 +89,7 @@ function getPlayerName() {
     return localStorage.getItem('userName') ?? false;
   }
 
-function getLocalScore() {
+function getGlobalScore() {
+    // Extremely simply gets the score for the local player.
     return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
 }
