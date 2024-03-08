@@ -39,10 +39,6 @@ async function updateLeaderboard(){
         return;
     }
 
-    if (playersContains(getPlayerName()) == false){
-        players.push([getPlayerName(), getGlobalScore()]);
-    }
-
     let randomPlayer = players[randomInt(0, players.length - 1)];
     let randomScore = randomInt(0, 1500);
     if (randomPlayer[1] < randomScore && randomPlayer[0] != getPlayerName()){

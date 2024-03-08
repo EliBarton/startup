@@ -45,7 +45,9 @@ async function saveScore(score) {
         // Save the scores in case we go offline in the future
         let players = [];
         scores.forEach(player => {
-            players.push([player.name, player.score])
+            if (player.name != getPlayerName()){
+                players.push([player.name, player.score])
+            }
         });
         localStorage.setItem('scores', JSON.stringify(players));
         // Set the high score element to the new high score
