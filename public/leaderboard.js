@@ -34,7 +34,10 @@ players = [];
 
 
 async function updateLeaderboard(){
-    
+    if (players.length === 0){
+        return;
+    }
+
     if (playersContains(getPlayerName()) == false){
         players.push([getPlayerName(), getLocalScore()]);
     }
