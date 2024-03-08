@@ -18,7 +18,7 @@ players = [];
         });
         console.log(players);
         // Save the scores in case we go offline in the future
-        localStorage.setItem('scores', players);
+        localStorage.setItem('scores', JSON.stringify(players));
     } catch {
         // If there was an error then just use the last saved scores
         console.log("Error getting scores");
@@ -86,5 +86,5 @@ function getPlayerName() {
   }
 
 function getLocalScore() {
-    return localStorage.getItem('LocalScore') ?? false;
+    return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
 }
