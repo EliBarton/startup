@@ -1,30 +1,27 @@
 
 let players = 
-[["Mr. Shoot", 1000], 
-["Mr. Guns", 900],  
-["Mr. Space", 800],  
-["Mr. Moon", 700],  
-["Mr. Man", 600],  
-["Mr. Canada", 500],  
-["Mr. David", 400],  
-["Mr. Clone", 300],  
-["Mr. James", 200],  
-["Mr. Placeholder", 1]]
+[]
 
 loadScores();
 let leaderboardInterval = setInterval(updateLeaderboard, 5000);
 
 async function loadScores() {
 let scores = [];
+players = [];
     try {
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
         scores = await response.json();
-
+        // Add the scores to the array of players for easy access
+        scores.forEach(player => {
+            players.push([player.name, player.score])
+        });
+        console.log(players);
         // Save the scores in case we go offline in the future
-        localStorage.setItem('scores', JSON.stringify(scores));
+        localStorage.setItem('scores', players);
     } catch {
         // If there was an error then just use the last saved scores
+        console.log("Error getting scores");
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
         scores = JSON.parse(scoresText);

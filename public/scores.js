@@ -1,6 +1,7 @@
 let localScore = 0;
 updateLocalScore(0);
 getLocalScore();
+
 let interval = setInterval(getLocalScore, 3000);
 
 
@@ -23,13 +24,12 @@ function getLocalScore(){
 
 function scoreButtonClicked(){
     let enteredScore = document.querySelector("#newhighscore").value
-    updateLocalScore(enteredScore)
+    saveScore(enteredScore);
 }
 
 async function saveScore(score) {
     const userName = this.getPlayerName();
-    const date = new Date().toLocaleDateString();
-    const newScore = {name: userName, score: score, date: date};
+    const newScore = {name: userName, score: score};
 
     try {
       const response = await fetch('/api/score', {
@@ -48,6 +48,19 @@ async function saveScore(score) {
   }
 
 function updateLocalScore(score){
+    let scoreEl = document.querySelector("#highscore");
+    if (score > 0){
+        localStorage.setItem("LocalScore", score);
+    }
+    if (localStorage.getItem('LocalScore') ?? false){
+        scoreEl.innerHTML = localStorage.getItem('LocalScore');
+    }
+    else{
+        scoreEl.innerHTML = 0
+    }
+}
+
+function getGlobalScore(score){
     let scoreEl = document.querySelector("#highscore");
     if (score > 0){
         localStorage.setItem("LocalScore", score);
