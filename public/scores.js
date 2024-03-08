@@ -1,3 +1,4 @@
+getBackgroundImage();
 let localScore = 0;
 updateLocalScore(0);
 updateScoreEl();
@@ -50,7 +51,6 @@ async function saveScore(score) {
         // Set the high score element to the new high score
         let scoreEl = document.querySelector("#highscore");
         scoreEl.innerHTML = getGlobalScore();
-        console.log(getGlobalScore);
     } catch {
         // If there was an error then just track scores locally
         this.updateLocalScore(newScore);
@@ -92,3 +92,10 @@ function getLocalScore() {
 function getPlayerName() {
     return localStorage.getItem('userName') ?? false;
   }
+
+async function getBackgroundImage() {
+    const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=QIIdnp5naW0OmbkboNDBRyog0TyAUj4fB6vqj7Ch', );
+    let data = await response.json()
+    console.log(data);
+    document.querySelector('main').style.backgroundImage = `url('${data.url}')`;
+}

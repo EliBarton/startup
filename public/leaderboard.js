@@ -1,4 +1,4 @@
-
+getBackgroundImage()
 let players = 
 []
 
@@ -92,4 +92,11 @@ function getPlayerName() {
 function getGlobalScore() {
     // Extremely simply gets the score for the local player.
     return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
+}
+
+async function getBackgroundImage() {
+    const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=QIIdnp5naW0OmbkboNDBRyog0TyAUj4fB6vqj7Ch', );
+    let data = await response.json()
+    console.log(data);
+    document.querySelector('main').style.backgroundImage = `url('${data.url}')`;
 }
