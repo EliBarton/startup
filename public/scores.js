@@ -96,6 +96,5 @@ function getPlayerName() {
 async function getBackgroundImage() {
     const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=QIIdnp5naW0OmbkboNDBRyog0TyAUj4fB6vqj7Ch', );
     let data = await response.json()
-    console.log(data);
     document.querySelector('main').style.backgroundImage = `url('${data.url}')`;
 }

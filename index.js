@@ -8,7 +8,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 
 // Serve up the front-end static content hosting
-app.use(express.static('startup/public'));
+app.use(express.static('public'));
 
 // Router for service endpoints
 var apiRouter = express.Router();

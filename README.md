@@ -65,3 +65,13 @@ For this deliverable I implemented JavaScript so that the application works for 
 - **database** - Displayed the live high score and leaderboard. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
 - **WebSocket** - I used the setInterval function to periodically increase a high score. This will be replaced with WebSocket messages later.
 - **application logic** - The high score updates when you get a new high score in the game if you run it locally. On the galagaonline.click website it isn't saving the score for some reason so I added manual entering the high score until I make the real galaga game.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that saves scores and provides the leaderboard.
+
+- **Node.js/Express HTTP service** - done!
+- **Static middleware for frontend** - done!
+- **Calls to third party endpoints** - The background image calls NASA's astronomy picture of the day
+- **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for scores.
+- **Frontend calls service endpoints** - I did this using the fetch function.
