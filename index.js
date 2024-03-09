@@ -8,7 +8,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 
 // Serve up the front-end static content hosting
-app.use(express.static('public'));
+app.use(express.static('startup/public'));
 
 // Router for service endpoints
 var apiRouter = express.Router();
@@ -39,11 +39,13 @@ app.listen(port, () => {
 let leaderboard = [];
 function updateLeaderboard(newScore, scores) {
   let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
+  for (i in scores) {
+    if (newScore.name === scores[i].name){
       found = true;
-      break;
+      if (newScore.score > scores[i].score) {
+        scores.splice(i, 1, newScore);
+        break;
+      }
     }
   }
 
@@ -54,6 +56,5 @@ function updateLeaderboard(newScore, scores) {
   if (scores.length > 10) {
     scores.length = 10;
   }
-  console.log(scores);
   return scores;
 }
