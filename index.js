@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 // Serve up the front-end static content hosting
-app.use(express.static('public'));
+app.use(express.static('startup/public'));
 
 
 // Router for service endpoints
@@ -39,7 +39,7 @@ apiRouter.post('/score', (req, res) => {
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
-  res.sendFile('index.html', { root: 'public' });
+  res.sendFile('index.html', { root: 'startup/public' });
 });
 
 app.listen(port, () => {

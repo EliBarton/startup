@@ -1,7 +1,9 @@
+getLocalScore();
 getBackgroundImage();
+
 loadScores();
 updateScoreEl();
-getLocalScore();
+
 
 let interval = setInterval(getLocalScore, 3000);
 
@@ -31,21 +33,28 @@ players = [];
     }
 }
 
-function getLocalScore(){
+async function getLocalScore(){
+
+    try {
     let openDB = indexedDB.open("/userfs", 21);
     openDB.onsuccess = function(event) {
-    let db = openDB.result;
+    let db = event.target.result;
     let transaction = db.transaction("FILE_DATA", "readonly");
     let objectStore = transaction.objectStore("FILE_DATA");
-
-    let request = objectStore.get("/userfs/bestscorejjlasers.data");
     
+
+    let request = objectStore.get("/userfs/godot/app_userdata/GalagaOnline/savescore.save");
     request.onsuccess = function(event) {
         localScore = new Int32Array(request.result.contents.buffer)[2];
+        saveScore(localScore)
         updateLocalScore(localScore)
     };
 
     };
+}
+    catch{
+        console.log("Error accessing database")
+    }
 }
 
 function scoreButtonClicked(){
@@ -109,9 +118,6 @@ function getGlobalScore(score){
     return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
 }
 
-function getLocalScore() {
-    localStorage.getItem('LocalScore') ?? false
-}
 
 function getPlayerName() {
     return localStorage.getItem('userName') ?? false;
