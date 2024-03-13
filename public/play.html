@@ -14,6 +14,7 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    
 </head>
 
 <body class="bg-dark text-light">
@@ -32,7 +33,7 @@
 
     <main>
         <div style="text-align: center;" >
-        <iframe src="Version0.3.2\index.html" width="896px" height="504px" onclick=""></iframe>
+        <iframe src="game/index.html" width="480px" height="600px" onclick=""></iframe>
         <div></div>
         <input type="number" id="newhighscore" placeholder="Enter your high score" />
         <button type="submit" class="btn btn-success" onclick="scoreButtonClicked()">Enter Score</button>
@@ -49,11 +50,12 @@
 <p style="display:none">
     Wow look at this cool hidden text! You are cool if you see this.
 </p>
-<script src="Version0.3.2\index.js"></script>
-        <script>
-            var engine = new Engine("startup\Version0.3.2\index.pck");
-            engine.startGame();
-        </script>
+<script src="game/index.js"></script>
+<script>
+    var engine = new Engine("game/index.pck");
+    engine.startGame();
+    if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
+</script>
 </body>
 <script src="login.js"></script>
 <script src="scores.js"></script>
