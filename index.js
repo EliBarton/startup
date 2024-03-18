@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
@@ -11,10 +12,6 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
   res.setHeader('Cross-Origin-Embedder-Policy', 'credentialless');
-  //res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-  //res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp; report-to="coep-endpoint"');
-  //res.setHeader('Cross-Origin-Resource-Policy', 'same-site');
-  //res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
   next();
 });
 
