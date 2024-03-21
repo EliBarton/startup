@@ -13,9 +13,15 @@ const scoreCollection = db.collection('score');
   process.exit(1);
 });
 
-async function addScore(score) {
-  const result = await scoreCollection.insertOne(score);
-  return result;
+async function updateScore(score) {
+  //if user already has a score, update it if new score if higher
+  const currentScore = await scoreCollection.findOne({name: score.name})
+  if (currentScore && currentScore.score < score.score){
+    await scoreCollection.findOneAndReplace({name: score.name}, score)
+  }else if (currentScore == null){
+    //if score never entered for user, add a new record
+    await scoreCollection.insertOne(score);
+  }
 }
 
 function getHighScores() {
@@ -29,7 +35,7 @@ function getHighScores() {
 }
 
 function getAllScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
+  const query = { score: { $gt: 0, $lt: 9000 } };
   const options = {
     sort: { score: -1 },
   };
@@ -37,4 +43,7 @@ function getAllScores() {
   return cursor.toArray();
 }
 
-module.exports = { addScore, getHighScores, getAllScores };
+
+
+
+module.exports = { updateScore, getHighScores, getAllScores };

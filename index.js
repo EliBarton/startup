@@ -32,9 +32,9 @@ apiRouter.get('/scores', async (_req, res) => {
 
 // SubmitScore
 apiRouter.post('/score', async (req, res) => {
-  DB.addScore(req.body)
+  await DB.updateScore(req.body)
   const scores = await DB.getAllScores();
-  res.send(leaderboard);
+  res.send(scores);
 });
 
 // Return the application's default page if the path is unknown
@@ -52,7 +52,7 @@ app.listen(port, () => {
 // The high scores are saved in memory and disappear whenever the service is restarted.
 let leaderboard = [];
 function updateLeaderboard(newScore, scores) {
-  let found = false;
+  /*let found = false;
   for (i in scores) {
     if (newScore.name === scores[i].name){
       found = true;
@@ -70,5 +70,5 @@ function updateLeaderboard(newScore, scores) {
   if (scores.length > 10) {
     scores.length = 10;
   }
-  return scores;
+  return scores;*/
 }
