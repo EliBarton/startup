@@ -92,11 +92,12 @@ async function saveScore(score) {
 
 function updateLocalScore(score){
     let scoreEl = document.querySelector("#highscore");
+    let scoreObj = {name: getPlayerName(), score: score}
     if (score > 0){
-        localStorage.setItem("LocalScore", score);
+        localStorage.setItem("LocalScore", scoreObj);
     }
     if (localStorage.getItem('LocalScore') ?? false){
-        scoreEl.innerHTML = localStorage.getItem('LocalScore');
+        scoreEl.innerHTML = localStorage.getItem('LocalScore').score;
     }
     else{
         scoreEl.innerHTML = 0
