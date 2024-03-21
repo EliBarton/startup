@@ -1,10 +1,13 @@
 const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`
-
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const { MongoClient } = require('mongodb');
 const client = new MongoClient(url);
 const db = client.db('galagaonline');
 const scoreCollection = db.collection('score');
+const userCollection = db.collection('user');
+
 
 (async function testConnection() {
   await client.connect();
@@ -44,7 +47,32 @@ function getAllScores() {
   return cursor.toArray();
 }
 
+function getUser(email) {
+  return userCollection.findOne({ email: email });
+}
 
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
 
+async function createUser(email, password) {
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
 
-module.exports = { updateScore, getHighScores, getAllScores };
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
+
+  return user;
+}
+
+module.exports = { 
+  updateScore, 
+  getHighScores, 
+  getAllScores,
+  getUser,
+  getUserByToken,
+  createUser };
