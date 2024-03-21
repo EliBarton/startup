@@ -13,6 +13,7 @@ let playerNameEl = document.querySelector("#playername");
 if (getPlayerName()){
   
   playerNameEl.innerHTML = getPlayerName();
+  document.querySelector('#playerName').textContent = getPlayerName();
 }
 else{
   playerNameEl.outerHTML = `<p class="nav" style="font-size: large; color: gray" id="playername">Not Logged In</p>`

@@ -115,3 +115,10 @@ h3 {
     padding-bottom: 1em;
 }
 
+#playerName{
+    font-size: large;
+    margin: 1em;
+    padding: 4px;
+    color: cadetblue;
+    background-color: black;
+}
