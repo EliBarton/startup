@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/EliBarton/startup#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^6.5.0",
+    "nodejs": "^0.0.0"
   }
 }

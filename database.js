@@ -1,5 +1,6 @@
 const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`
+
 const { MongoClient } = require('mongodb');
 const client = new MongoClient(url);
 const db = client.db('galagaonline');
