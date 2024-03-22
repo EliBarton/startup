@@ -60,6 +60,7 @@ async function getLocalScore(){
 function scoreButtonClicked(){
     let enteredScore = document.querySelector("#newhighscore").value
     saveScore(enteredScore);
+    updateLocalScore(enteredScore);
 }
 
 async function saveScore(score) {
@@ -86,18 +87,20 @@ async function saveScore(score) {
         scoreEl.innerHTML = getGlobalScore();
     } catch {
         // If there was an error then just track scores locally
-        this.updateLocalScore(newScore);
+        this.updateLocalScore(newScore.score);
     }
   }
 
 function updateLocalScore(score){
     let scoreEl = document.querySelector("#highscore");
-    let scoreObj = {name: getPlayerName(), score: score}
+    const scoreObj = {name: getPlayerName(), score: score,}
+    
     if (score > 0){
-        localStorage.setItem("LocalScore", scoreObj);
+        localStorage.setItem("LocalScore", JSON.stringify(scoreObj));
     }
     if (localStorage.getItem('LocalScore') ?? false){
-        scoreEl.innerHTML = localStorage.getItem('LocalScore').score;
+        console.log(localStorage.getItem('LocalScore').toString());
+        scoreEl.innerHTML = JSON.parse(localStorage.getItem('LocalScore')).score;
     }
     else{
         scoreEl.innerHTML = 0
@@ -110,7 +113,7 @@ function updateScoreEl(score){
         scoreEl.innerHTML = getGlobalScore();
     }
     else{
-        scoreEl.innerHTML = 0
+        scoreEl.innerHTML = 0;
     }
 }
 
