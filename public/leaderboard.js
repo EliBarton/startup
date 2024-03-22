@@ -5,6 +5,7 @@ let players =
 loadScores();
 let leaderboardInterval = setInterval(updateLeaderboard, 5000);
 
+
 async function loadScores() {
 let scores = [];
 players = [];
@@ -12,9 +13,10 @@ players = [];
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
         scores = await response.json();
+        console.log(scores)
         // Add the scores to the array of players for easy access
         scores.forEach(player => {
-            players.push([player.name, player.score])
+            players.push(player)
         });
         // Save the scores in case we go offline in the future
         localStorage.setItem('scores', JSON.stringify(players));
@@ -24,7 +26,7 @@ players = [];
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
             scoresText.forEach(player => {
-                players.push([player.name, player.score])
+                players.push(player)
             });
         }
     }
@@ -41,10 +43,10 @@ async function updateLeaderboard(){
 
     let randomPlayer = players[randomInt(0, players.length - 1)];
     let randomScore = randomInt(0, 1500);
-    if (randomPlayer[1] < randomScore && randomPlayer[0] != getPlayerName()){
-        randomPlayer[1] = randomScore;
+    if (randomPlayer.score < randomScore && randomPlayer.name != getPlayerName()){
+        randomPlayer.score = randomScore;
     }
-    players.sort((a, b) => -1 * (a[1] - b[1]));
+    players.sort((a, b) => -1 * (a.score - b.score));
 
     let leaderboardEL = document.querySelector(".Leaderboard")
 
@@ -55,8 +57,8 @@ players.forEach((player, index) => {
     if (index < 10){
     leaderboardHTML += `
     <li>
-        <span class="player-name">${index + 1}. ${player[0]}</span>
-        <span class="score">${player[1]}</span>
+        <span class="player-name">${index + 1}. ${player.name}</span>
+        <span class="score">${player.score}</span>
     </li>`;
     }
 });

@@ -1,23 +1,23 @@
 getLocalScore();
 getBackgroundImage();
-
-loadScores();
+let players = []
+loadScores(players);
 updateScoreEl();
 
 
 let interval = setInterval(getLocalScore, 3000);
 
 
-async function loadScores() {
+async function loadScores(players) {
 let scores = [];
-players = [];
     try {
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
         scores = await response.json();
+        console.log(scores)
         // Add the scores to the array of players for easy access
         scores.forEach(player => {
-            players.push([player.name, player.score])
+            players.push(player)
         });
         // Save the scores in case we go offline in the future
         localStorage.setItem('scores', JSON.stringify(players));
@@ -27,7 +27,7 @@ players = [];
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
             scoresText.forEach(player => {
-                players.push([player.name, player.score])
+                players.push(player)
             });
         }
     }
@@ -79,7 +79,7 @@ async function saveScore(score) {
         // Save the scores in case we go offline in the future
         let players = [];
         scores.forEach(player => {
-            players.push([player.name, player.score])
+            players.push(player)
         });
         localStorage.setItem('scores', JSON.stringify(players));
         // Set the high score element to the new high score
@@ -117,9 +117,12 @@ function updateScoreEl(score){
     }
 }
 
-function getGlobalScore(score){
+function getGlobalScore(){
     // Extremely simply gets the score for the local player.
-    return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
+    var scoresList = JSON.parse(localStorage.getItem('scores'))
+    var scoreIndex = scoresList.findIndex(score => score.name == getPlayerName())
+    return scoresList[scoreIndex].score;
+    //return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
 }
 
 

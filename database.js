@@ -39,7 +39,7 @@ function getHighScores() {
 }
 
 function getAllScores() {
-  const query = { score: { $gt: 0, $lt: 9000 } };
+  const query = {};
   const options = {
     sort: { score: -1 },
   };
