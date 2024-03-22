@@ -32,7 +32,7 @@ app.use(`/api`, apiRouter);
 // GetScores
 apiRouter.get('/scores', async (_req, res) => {
   const scores = await DB.getAllScores();
-  res.send(leaderboard);
+  res.send(scores);
 });
 
 // SubmitScore
