@@ -4,13 +4,16 @@ const DB = require('./database.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 
-const authCookieName = 'token';
+const authCookieName = 'yourlogin';
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
+
+// Use the cookie parser middleware for tracking authentication tokens
+app.use(cookieParser());
 
 // Header necessary to run the galaga game
 app.use((req, res, next) => {
@@ -128,3 +131,20 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+// DeleteAuth token if stored in cookie
+apiRouter.delete('/auth/logout', (_req, res) => {
+  res.clearCookie(authCookieName);
+  res.status(204).end();
+});
+
+// GetUser returns information about a user
+apiRouter.get('/user/:name', async (req, res) => {
+  const user = await DB.getUser(req.params.name);
+  if (user) {
+    const token = req?.cookies.token;
+    res.send({ name: user.name, authenticated: token === user.token });
+    return;
+  }
+  res.status(404).send({ msg: 'Unknown' });
+});

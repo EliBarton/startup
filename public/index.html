@@ -34,7 +34,7 @@
         </p>
         <p style="font-size: x-large; text-align: center; margin: 6px;">Login</p>
         <div style="width: 250px; border: solid grey thick; padding: 10px;">
-        <form method="get" action="play.html" id="loginControls">
+        <div id="loginControls">
             <div class="form-group">
             <label for="name">Username</label>
             <input type="text" id="username" placeholder="Enter username" />
@@ -45,7 +45,7 @@
             </div>
             <button type="submit" class="btn btn-success" onclick="loginUser()">Login</button>
             <button type="submit" class="btn btn-success" onclick="createUser()">Create</button>
-          </form>
+        </div>
           <!-- Displayed when ready to play -->
         <div id="playControls">
             <div id="playerName"></div>
