@@ -77,8 +77,8 @@ async function getBackgroundImage() {
 }
 
 function setDisplay(controlId, display) {
-  const playControlEl = document.querySelector(`#${controlId}`);
-  if (playControlEl) {
-    playControlEl.style.display = display;
-  }
+  const playControlEl = document.querySelectorAll(`#${controlId}`);
+  playControlEl.forEach(element => {
+    element.style.display = display;
+  });
 }
