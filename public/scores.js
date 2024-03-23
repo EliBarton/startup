@@ -99,7 +99,6 @@ function updateLocalScore(score){
         localStorage.setItem("LocalScore", JSON.stringify(scoreObj));
     }
     if (localStorage.getItem('LocalScore') ?? false){
-        console.log(localStorage.getItem('LocalScore').toString());
         scoreEl.innerHTML = JSON.parse(localStorage.getItem('LocalScore')).score;
     }
     else{
