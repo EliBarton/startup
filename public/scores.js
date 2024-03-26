@@ -1,12 +1,14 @@
+const { UUID } = require("mongodb");
+
 getLocalScore();
 getBackgroundImage();
 let players = []
 loadScores(players);
 updateScoreEl();
 
-
 let interval = setInterval(getLocalScore, 3000);
 
+configureWebSocket();
 
 async function loadScores(players) {
 let scores = [];
@@ -121,8 +123,7 @@ function getGlobalScore(){
     var scoresList = JSON.parse(localStorage.getItem('scores'))
     var scoreIndex = scoresList.findIndex(score => score.name == getPlayerName())
     return scoresList[scoreIndex].score;
-    //return JSON.parse(localStorage.getItem('scores'))[JSON.parse(localStorage.getItem('scores')).findIndex(score => score.includes(getPlayerName()))][1] ?? false;
-}
+    }
 
 
 function getPlayerName() {
@@ -155,10 +156,12 @@ function configureWebSocket() {
     };
   }
 
-  function displayMsg(cls, from, msg) {
-    const chatText = document.querySelector('#player-messages');
-    chatText.innerHTML =
-      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+  async function displayMsg(cls, from, msg) {
+    const chatText = document.querySelector('.alert-container');
+  chatText.innerHTML =
+    `<div class="alert">${msg}<span class="closebtn" onclick="this.parentElement.style.display='none';">
+    &times;</span></div>` + chatText.innerHTML;
+   
   }
 
   function broadcastEvent(from, type, value) {
@@ -170,3 +173,4 @@ function configureWebSocket() {
     this.socket.send(JSON.stringify(event));
   }
 
+  

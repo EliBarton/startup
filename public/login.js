@@ -40,9 +40,9 @@ async function loginOrCreate(endpoint) {
     //const body = await response.json();
     //const modalEl = document.querySelector('#msgModal');
     //modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-    console.log(body.msg)
     //const msgModal = new bootstrap.Modal(modalEl, {});
     //msgModal.show();
+    displayUnauthMsg();
   }
 }
 
@@ -81,4 +81,12 @@ function setDisplay(controlId, display) {
   playControlEl.forEach(element => {
     element.style.display = display;
   });
+}
+
+async function displayUnauthMsg() {
+  const chatText = document.querySelector('.alert-container');
+chatText.innerHTML =
+  `<div class="alert" style="background-color: red !important;">Incorrect username or password<span class="closebtn" onclick="this.parentElement.style.display='none';">
+  &times;</span></div>` + chatText.innerHTML;
+ 
 }
