@@ -40,12 +40,6 @@ async function updateLeaderboard(){
     if (players.length === 0){
         return;
     }
-
-    let randomPlayer = players[randomInt(0, players.length - 1)];
-    let randomScore = randomInt(0, 1500);
-    if (randomPlayer.score < randomScore && randomPlayer.name != getPlayerName()){
-        randomPlayer.score = randomScore;
-    }
     players.sort((a, b) => -1 * (a.score - b.score));
 
     let leaderboardEL = document.querySelector(".Leaderboard")

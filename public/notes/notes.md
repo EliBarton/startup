@@ -150,3 +150,10 @@ Servers:
 DNS resolver: A client-side application that converts domain names to IP addresses.
 Authoritative name server: A DNS server that holds the authoritative DNS records for a domain.
 Root name server: The highest level of DNS servers that contain the DNS root zone.
+
+
+## Things to do for the websocket deliverable
+
+- Show error message when unauthorized
+- Display websocket message when somebody scores on the leaderboard
+- Update the galaga game to last longer and be more interesting
