@@ -1,3 +1,4 @@
+const { UUID } = require("mongodb");
 
 getLocalScore();
 getBackgroundImage();
@@ -137,34 +138,27 @@ async function getBackgroundImage() {
     document.querySelector('main').style.backgroundImage = `url('${data.url}')`;
 }
 
-class WebSock {
 
-    socket;
-
-    constructor() {
-        this.configureWebSocket();
-    }
-
- configureWebSocket() {
+function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-    this.socket.onopen = (event) => {
-      this.socket.send(JSON.stringify(event));displayMsg('system', 'game', 'connected');
+    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    socket.onopen = (event) => {
+      displayMsg('system', 'game', 'connected');
     };
-    this.socket.onclose = (event) => {
-        this.displayMsg('system', 'game', 'disconnected');
+    socket.onclose = (event) => {
+      displayMsg('system', 'game', 'disconnected');
     };
-    this.socket.onmessage = async (event) => {
+    socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
       if (msg.type != null) {
-        this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
+        displayMsg('player', msg.from, `scored ${msg.value.score}`);
       } else if (msg.type === GameStartEvent) {
-        this.displayMsg('player', msg.from, `started a new game`);
+        displayMsg('player', msg.from, `started a new game`);
       }
     };
   }
 
-  async displayMsg(cls, from, msg) {
+  async function displayMsg(cls, from, msg) {
     const chatText = document.querySelector('.alert-container');
   chatText.innerHTML =
     `<div class="alert">${msg}<span class="closebtn" onclick="this.parentElement.style.display='none';">
@@ -172,13 +166,13 @@ class WebSock {
    
   }
 
-   broadcastEvent(from, type, value) {
+  function broadcastEvent(from, type, value) {
     const event = {
       from: from,
       type: type,
       value: value,
     };
-    this.socket.send(JSON.stringify(event));
+    socket.send(JSON.stringify(event));
   }
 
-}
+  
