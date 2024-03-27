@@ -87,6 +87,7 @@ async function saveScore(score) {
         // Set the high score element to the new high score
         let scoreEl = document.querySelector("#highscore");
         scoreEl.innerHTML = getGlobalScore();
+        broadcastEvent(userName, "newScore", score)
     } catch {
         // If there was an error then just track scores locally
         this.updateLocalScore(newScore.score);
@@ -148,7 +149,7 @@ function configureWebSocket() {
     };
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
-      if (msg.type === GameEndEvent) {
+      if (msg.type != null) {
         this.displayMsg('player', msg.from, `scored ${msg.value.score}`);
       } else if (msg.type === GameStartEvent) {
         this.displayMsg('player', msg.from, `started a new game`);
