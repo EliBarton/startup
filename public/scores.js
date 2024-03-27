@@ -47,8 +47,10 @@ async function getLocalScore(){
     let request = objectStore.get("/userfs/godot/app_userdata/GalagaOnline/savescore.save");
     request.onsuccess = function(event) {
         localScore = new Int32Array(request.result.contents.buffer)[2];
-        saveScore(localScore)
-        updateLocalScore(localScore)
+        if (localScore > getGlobalScore()) {
+            saveScore(localScore)
+            updateLocalScore(localScore)
+        }
     };
 
     };
@@ -151,10 +153,10 @@ function configureWebSocket() {
 
     socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
-      if (msg.type != null) {
-        displayMsg('player', msg.from, `scored ${msg.value.score}`);
-      } else if (msg.type === GameStartEvent) {
-        displayMsg('player', msg.from, `started a new game`);
+      if (msg.type === "newScore") {
+        displayMsg('player', msg.from, `scored ${msg.score}`);
+      } else if (msg.type === "arrived") {
+        displayMsg('player', msg.from, `just arrived`);
       }
     };
 
