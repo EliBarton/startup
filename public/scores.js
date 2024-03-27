@@ -62,8 +62,10 @@ async function getLocalScore(){
 
 function scoreButtonClicked(){
     let enteredScore = document.querySelector("#newhighscore").value
-    saveScore(enteredScore);
-    updateLocalScore(enteredScore);
+    if (enteredScore > getGlobalScore()) {
+        saveScore(enteredScore);
+        updateLocalScore(enteredScore);
+    }
 }
 
 async function saveScore(score) {
@@ -122,9 +124,14 @@ function updateScoreEl(score){
 
 function getGlobalScore(){
     // Extremely simply gets the score for the local player.
-    var scoresList = JSON.parse(localStorage.getItem('scores'))
-    var scoreIndex = scoresList.findIndex(score => score.name == getPlayerName())
-    return scoresList[scoreIndex].score;
+    if (localStorage.getItem('scores')){
+        var scoresList = JSON.parse(localStorage.getItem('scores'))
+        if (scoresList.some(score => score.name == getPlayerName())){
+            var scoreIndex = scoresList.findIndex(score => score.name == getPlayerName())
+            return scoresList[scoreIndex].score;
+        }
+    }
+    return null;
     }
 
 
@@ -154,7 +161,7 @@ function configureWebSocket() {
     socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
       if (msg.type === "newScore") {
-        displayMsg('player', msg.from, `scored ${msg.score}`);
+        displayMsg('player', msg.from, `scored ${msg.value}`);
       } else if (msg.type === "arrived") {
         displayMsg('player', msg.from, `just arrived`);
       }
@@ -166,7 +173,7 @@ function configureWebSocket() {
   async function displayMsg(cls, from, msg) {
     const chatText = document.querySelector('.alert-container');
   chatText.innerHTML =
-    `<div class="alert">${msg}<span class="closebtn" onclick="this.parentElement.style.display='none';">
+    `<div class="alert">${from} ${msg}<span class="closebtn" onclick="this.parentElement.style.display='none';">
     &times;</span></div>` + chatText.innerHTML;
    
   }
