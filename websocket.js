@@ -58,4 +58,4 @@ function webSocket(httpServer) {
   }
 
   
-module.exports = { peerProxy };
+module.exports = { webSocket };

@@ -16,7 +16,6 @@ let scores = [];
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
         scores = await response.json();
-        console.log(scores)
         // Add the scores to the array of players for easy access
         scores.forEach(player => {
             players.push(player)
