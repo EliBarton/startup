@@ -3,6 +3,7 @@ const app = express();
 const DB = require('./database.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
+const { webSocket } = require('./websocket.js');
 
 const authCookieName = 'yourlogin';
 
@@ -148,3 +149,9 @@ apiRouter.get('/user/:name', async (req, res) => {
   }
   res.status(404).send({ msg: 'Unknown' });
 });
+
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+webSocket(httpService);

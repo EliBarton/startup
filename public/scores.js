@@ -1,4 +1,3 @@
-const { UUID } = require("mongodb");
 
 getLocalScore();
 getBackgroundImage();
@@ -7,7 +6,7 @@ loadScores(players);
 updateScoreEl();
 
 let interval = setInterval(getLocalScore, 3000);
-let socket;
+const socket = configureWebSocket();
 
 configureWebSocket();
 
@@ -141,13 +140,16 @@ async function getBackgroundImage() {
 
 function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    let socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+
     socket.onopen = (event) => {
       displayMsg('system', 'game', 'connected');
     };
+
     socket.onclose = (event) => {
       displayMsg('system', 'game', 'disconnected');
     };
+
     socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
       if (msg.type != null) {
@@ -156,6 +158,8 @@ function configureWebSocket() {
         displayMsg('player', msg.from, `started a new game`);
       }
     };
+
+    return socket;
   }
 
   async function displayMsg(cls, from, msg) {
