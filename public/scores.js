@@ -1,4 +1,3 @@
-const { UUID } = require("mongodb");
 
 getLocalScore();
 getBackgroundImage();
@@ -7,6 +6,7 @@ loadScores(players);
 updateScoreEl();
 
 let interval = setInterval(getLocalScore, 3000);
+let socket;
 
 configureWebSocket();
 
@@ -137,15 +137,22 @@ async function getBackgroundImage() {
     document.querySelector('main').style.backgroundImage = `url('${data.url}')`;
 }
 
+class WebSock {
 
-function configureWebSocket() {
+    socket;
+
+    constructor() {
+        this.configureWebSocket();
+    }
+
+ configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onopen = (event) => {
-      this.displayMsg('system', 'game', 'connected');
+      this.socket.send(JSON.stringify(event));displayMsg('system', 'game', 'connected');
     };
     this.socket.onclose = (event) => {
-      this.displayMsg('system', 'game', 'disconnected');
+        this.displayMsg('system', 'game', 'disconnected');
     };
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
@@ -157,7 +164,7 @@ function configureWebSocket() {
     };
   }
 
-  async function displayMsg(cls, from, msg) {
+  async displayMsg(cls, from, msg) {
     const chatText = document.querySelector('.alert-container');
   chatText.innerHTML =
     `<div class="alert">${msg}<span class="closebtn" onclick="this.parentElement.style.display='none';">
@@ -165,7 +172,7 @@ function configureWebSocket() {
    
   }
 
-  function broadcastEvent(from, type, value) {
+   broadcastEvent(from, type, value) {
     const event = {
       from: from,
       type: type,
@@ -174,4 +181,4 @@ function configureWebSocket() {
     this.socket.send(JSON.stringify(event));
   }
 
-  
+}
