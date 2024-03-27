@@ -8,8 +8,6 @@ updateScoreEl();
 let interval = setInterval(getLocalScore, 3000);
 const socket = configureWebSocket();
 
-configureWebSocket();
-
 async function loadScores(players) {
 let scores = [];
     try {

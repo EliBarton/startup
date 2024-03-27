@@ -86,3 +86,12 @@ For this deliverable I associate the scores with the logged in user. I stored th
 - **existing user** - Stores the high score under the same user if the user already exists.
 - **Use MongoDB to store credentials** - Stores both user and their scores.
 - **Restricts functionality** - You cannot play until you have logged in.
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to tell all players when somebody else beats their high score.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - When somebody else gets a high score, you will get a popup telling you what they scored.
