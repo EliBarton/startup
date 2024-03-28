@@ -96,3 +96,5 @@ For this deliverable I used webSocket to tell all players when somebody else bea
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - When somebody else gets a high score, you will get a popup telling you what they scored.
 
+Galaga game was also updated with more enemies and upgrades
+Enter score field is included for simpler testing of websocket
