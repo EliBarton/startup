@@ -5,11 +5,11 @@
 Do you want to find out if you are the best Galaga player ever? This game is an endless space shooter game similar to Galaga but there is an online score leaderboard. You can compete with your friends to try to get the highest score. The high scores update live and you claim your high schore using your account so that you can clearly see who is winning in a close contest.
 
 ## Design
-![Welcome Page](WelcomePage.png) 
+![Welcome Page](public/notes/WelcomePage.png) 
 
-![Game Page](GamePage.png)
+![Game Page](public/notes/GamePage.png)
 
-![Score Page](ScorePage.png)
+![Score Page](public/notes/ScorePage.png)
 
 ## Key Features
 - Secure login over HTTPS
@@ -96,3 +96,5 @@ For this deliverable I used webSocket to tell all players when somebody else bea
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - When somebody else gets a high score, you will get a popup telling you what they scored.
 
+Galaga game was also updated with more enemies and upgrades
+Enter score field is included for simpler testing of websocket
