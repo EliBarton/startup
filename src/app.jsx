@@ -25,9 +25,6 @@ export default function App() {
   <span>Creator: Eli Barton</span>
   <a href="https://github.com/EliBarton/startup">Eli Barton's GitHub</a>
 </footer>
-<p style="display:none">
-  Wow look at this cool hidden text! You are cool if you see this.
-</p>
 </div>
 </BrowserRouter>;
 }
