@@ -6,6 +6,10 @@ import { Login } from './login/login';
 import { Scores } from './scores/scores';
 import { Play } from './play/play';
 
+function NotFound() {
+  return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+}
+
 export default function App() {
   return <BrowserRouter>
   <div className="bg-dark text-light app">
