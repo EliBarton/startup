@@ -1,6 +1,5 @@
 
-body{
-    font-family: 'Ubuntu';
+.app{
     display: flex;
     flex-direction: column;
 }
@@ -25,10 +24,10 @@ nav{
     
 }
 .navbar-brand{
-    margin: 0px;
-    padding: 1em;
     border: solid whitesmoke thin;
-    font-size: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0px;
 }
 
 menu{
@@ -37,7 +36,7 @@ menu{
 }
 
 .nav-item{
-    padding-left: 1.5em;
+    padding-left: 2em;
     margin: 0;
 }
 
