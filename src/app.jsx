@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import './game/index.js'
+import './play/game/index.js'
 import { useEffect } from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
@@ -31,9 +31,9 @@ export default function App() {
       document.querySelector('main').style.backgroundImage = backgroundImage;
       const userName = localStorage.getItem('username');
  
-      //var engine = new Engine("game/index.pck");
-      //engine.startGame();
-      //if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
+      var engine = new window.Engine("game/index.pck");
+      engine.startGame();
+      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
     })();
   }, []);
   return <BrowserRouter>
