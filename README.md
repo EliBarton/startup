@@ -96,5 +96,12 @@ For this deliverable I used webSocket to tell all players when somebody else bea
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - When somebody else gets a high score, you will get a popup telling you what they scored.
 
-Galaga game was also updated with more enemies and upgrades
-Enter score field is included for simpler testing of websocket
+
+## React deliverable
+
+For this deliverable I converted the application over to use React. I wasn't able to get the game working with react.
+
+- [x] **Bundled and transpiled** - done!
+- [x] **Components** - Login, Scores, and play are all components
+- [x] **Router** - Routing between all components.
+- [x] **Hooks** - They are in there.
