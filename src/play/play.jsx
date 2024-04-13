@@ -10,6 +10,7 @@ export function Play() {
         <h3>High Score: <span id="highscore">0</span></h3>
         <h2>Instructions:</h2>
         <p style={{ marginLeft: '20em', marginRight: '20em' }}>Press space to shoot and arrow keys or wasd to move. Get points by killing enemies and advancing through the rounds. Get a higher score than your last to save it.</p>
+        <script src='./rungame.js'></script>
     </main>
   )
 }
