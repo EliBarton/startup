@@ -31,9 +31,9 @@ export default function App() {
       document.querySelector('main').style.backgroundImage = backgroundImage;
       const userName = localStorage.getItem('username');
  
-      var engine = new Engine("game/index.pck");
-      engine.startGame();
-      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
+      //var engine = new Engine("game/index.pck");
+      //engine.startGame();
+      //if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer
     })();
   }, []);
   return <BrowserRouter>

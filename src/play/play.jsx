@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Button from 'react-bootstrap/Button';
+import 'src/'
 
 export function Play() {
   return (
     <main>
         <div className="alert-container"></div>
-        <iframe src="game/index.html" width="480px" height="600px" onclick=""></iframe>
+        <iframe src="src/game/index.html" width="480px" height="600px" onClick=""></iframe>
         <div></div>
         <h3>High Score: <span id="highscore">0</span></h3>
         <h2>Instructions:</h2>
